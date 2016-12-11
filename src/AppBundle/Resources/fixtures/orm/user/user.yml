@@ -1,0 +1,20 @@
+AppBundle\Entity\User\User:
+  Theo:
+    username: 'Theo'
+    email: 'theogmail.com'
+    enabled: true
+    password: 'azerty'
+    last_login: '<dateTimeBetween("-200 days", "now")>'
+    level: 1
+    xp: 500
+    team: 'red'
+
+  Paul:
+      username: 'Paul'
+      email: 'Paulgmail.com'
+      enabled: true
+      password: 'azerty'
+      last_login: '<dateTimeBetween("-200 days", "now")>'
+      level: 2
+      xp: 590
+      team: 'blue'

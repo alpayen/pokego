@@ -1,64 +1,31 @@
-pokemon-go
+﻿pokemon-go
 ==========
 
 Faire un composer update
 
 Créer une base de donnée config dans App/config/parameter.yml
-bin/console doctrine:database:create
-bin/console doctrine:schema:update --force
+faire les commandes dans une console : 
 
-Pour mettre a jour les fixtures:
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:update --force
 
-bin/console doctrine:fixtures:load
-
-si vous n'etes pas en php 7 mettre dans le composer.json alice en version 2.1 et mettre ce code dans le LoadPokemonData
-
-*** Export PHP ***
-*******************
-```<?php
-
-namespace AppBundle\DataFixtures\ORM;
-use AppBundle\Entity\User\User;
-use Doctrine\Common\DataFixtures\FixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
-use Nelmio\Alice\Fixtures;
+A changer obligé : ressources/fictures/user.yml
+		   metter en un ou deux, changer tous si on a les meme on se fait cramass obligé
 
 
-/**
- * Created by PhpStorm.
- * User: shuwen
- * Date: 30/11/2016
- * Time: 15:51
- */
-class LoadPokemonData implements FixtureInterface
-{
+php bin/console doctrine:fixtures:load
 
-    /**
-     * Load data fixtures with the passed EntityManager
-     *
-     * @param ObjectManager $manager
-     */
-    public function load(ObjectManager $manager)
-    {
-        $typeObjects = Fixtures::load(__DIR__.'\..\..\Resources\fixtures\orm\pokemon\type.yml', $manager);
-        $typeObjects = Fixtures::load(__DIR__.'\..\..\Resources\fixtures\orm\pokemon\pokemon.yml', $manager);
-    }
-}
-```
 
-faire un ``` bin/console doctrine:generate:entities AppBundle:User/User
- ```
+
+d'ici : Modifier bien les noms de fonctions, de variable, la structure du code au possible
+ce serai con de ce faire cramer si on a tous les meme bails :)
+
 ### pour lancer lappli
-bin/console server:run
-ou
-bin/console server:start
+php bin/console server:run
 
-# Exo
-Coder une fixture d’un user
+### vérifier que tous marche :
 
+tu vas sur ton localhost a l'adresse : find/1, renvoie un tableau en json avec un user associcier
+tu fais capture/1 : renvoie que le pokemon est capturer
+tu fais pokedex/1 : renvoie que les pokemons du user 1
 
-Faire un call api/find qui créer un pokemon avec des stats random et le lier avec votre user.
-Faire un call capture avec l’id du userPokemonStats comme paramètre, ce call essaiera de capturer le pokemon (attention il manque quelque chose dans l’entité userPokemonStats pour savoir si le pokemon est capturé ou non)
-Faire un call /pokedex pour savoir tous les pokemons que vous possédez
-# pokego
-# pokegocheat
